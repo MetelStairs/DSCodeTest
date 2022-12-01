@@ -8,8 +8,10 @@ merge_data.head()
 
 merge_data.describe()
 
-merge_data['Datetime']= pd.to_datetime(merge_data['Datetime'], dayfirst=True)
 merge_data.set_index(['Datetime'], inplace = True)
+
+merge_data.index= pd.to_datetime(merge_data.index, dayfirst=True, format="%Y-%m-%d %H:%M:%S")
+
 # check nulls
 merge_data.isnull().sum()
 
@@ -50,4 +52,6 @@ two_hour_merged = pd.concat([merge_data, two_hour], axis=0)
 two_hour_one_day = two_hour.resample('1d', origin='start').mean()
 
 two_hour_one_day_ffill = two_hour_one_day[['Price']].ffill()
+
+two_hour_one_day_ffill
 

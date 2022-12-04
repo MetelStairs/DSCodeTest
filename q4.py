@@ -52,7 +52,7 @@ def ohlc_df_creator(input_data, freq_input, product):
             last = selected_product_contract['Price'].resample(freq_input, origin='07:00').last().dropna()
             quantity = selected_product_contract['Quantity'].resample(freq_input, origin='07:00').sum().dropna()
             # Trims the quantiy between times otherwise fills time outside with 0's
-            quantity = quantity.between_time('7:00', '16:00')
+            quantity = quantity.between_time('7:00', '17:00')
         else:
             print("No valid time was selected, please choose between: 15MIN, 1H or 1D")
             return

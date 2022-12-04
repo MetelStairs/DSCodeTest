@@ -20,7 +20,6 @@ def robotPosition(input):
     # for loop to for each tuple, updated the location of the robot after ever if statement and then combines the
     # x and y axis at the end before returning the value
     for i in dir_dis_split:
-        print(i[0])
         if i[0] == "LEFT":
             robot_left_right = robot_left_right - int(i[1])
         elif i[0] == "RIGHT":
@@ -40,8 +39,8 @@ def robotPosition(input):
         return final_position
 
 
+# Robot input
+robot_directions= "BEGIN left 3 UP 5 RIGHT 4 DOWN 7 STOP"
 
-robot_directions= "BEGIN LEFT 3 UP 5 RIGHT 4 DOWN 7 STOP"
-
-robot_final_position = robotPosition(robot_directions)
+robot_final_position = robotPosition(robot_directions.upper())
 print("The final position of the robot is: ", robot_final_position)

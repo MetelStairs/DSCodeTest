@@ -41,7 +41,7 @@ two_hour = hour.resample('2h', origin='start').mean()
 two_hour.dropna(inplace=True)
 # This is a dataframe with 2-hour resolution between 7:00 - 17:00 only as index
 two_hour
-# this will then
+# this will then add in a time resolution to allow for merge back into original data
 two_hour['Resolution'] = "2H"
 
 # DF merged together with original data
@@ -53,5 +53,6 @@ two_hour_one_day = two_hour.resample('1d', origin='start').mean()
 
 two_hour_one_day_ffill = two_hour_one_day[['Price']].ffill()
 
+#This is the final DF with the day forward filled
 two_hour_one_day_ffill
 
